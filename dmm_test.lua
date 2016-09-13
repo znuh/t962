@@ -5,7 +5,7 @@ mm = dmm("/dev/ttyUSB1")
 while true do
 	local temp, time = mm:read()
 	if temp then
-		print(temp,23)
+		print(temp)
 		sleep(0.1)
 	end
 end
