@@ -1,22 +1,31 @@
 require "t962"
 require "utils"
-require "dmm"
 
 use_gnuplot = 1
 
 if oven == nil then
-	oven = t962("/dev/ttyUSB0")
-end
-
-function dmm_init()
-	mm = dmm("/dev/ttyUSB1")
+	oven = t962("/dev/ttyUSB3")
 end
 
 dofile("ofen.lua")
 
+lmpa_q6_wv = {
+	ramp_up = 1, -- 1°C/s
+	peak_temp = 200,
+	peak_hold = 30,
+	ramp_down = -1, -- -1°C/s
+}
+
 xilinx_wv = {
 	ramp_up = (250-25)/300, -- 5 min ramp, < 1°C/s
 	peak_temp = 250,
+	peak_hold = 10,
+	ramp_down = -1, -- -1°C/s
+}
+
+pb_wv = {
+	ramp_up = (245-25)/300, -- 5 min ramp, < 1°C/s
+	peak_temp = 245,
 	peak_hold = 10,
 	ramp_down = -1, -- -1°C/s
 }
